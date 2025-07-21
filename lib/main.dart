@@ -1,7 +1,7 @@
-import 'package:flutter_3d_carousel/flutter_3d_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_3d_carousel_example/example_1/example_1.dart';
 import 'package:flutter_3d_carousel_example/example_2/example_2.dart';
+import 'package:flutter_3d_carousel_example/example_3/example_3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,6 +58,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 foregroundColor: WidgetStatePropertyAll(Colors.white),
               ),
               child: Text('Example 2', style: TextStyle(fontSize: 22)),
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Example3()),
+                );
+              },
+              style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(Colors.blue),
+                foregroundColor: WidgetStatePropertyAll(Colors.white),
+              ),
+              child: Text('Example 3', style: TextStyle(fontSize: 22)),
             ),
           ],
         ),

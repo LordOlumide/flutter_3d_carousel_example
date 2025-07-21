@@ -28,6 +28,7 @@ class _Example2State extends State<Example2> {
               isDragInteractive: true,
               onlyRenderForeground: false,
               clockwise: false,
+              spinAxis: Axis.horizontal,
               backgroundBlur: 3,
               spinWhileRotating: false,
               shouldRotate: true,
@@ -35,6 +36,7 @@ class _Example2State extends State<Example2> {
               snapTimeInMillis: 100,
               perspectiveStrength: 0.001,
               dragSensitivity: 1.5,
+              clipBehavior: Clip.hardEdge,
               onValueChanged: (newValue) {
                 // print(newValue);
               },
