@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_3d_carousel_example/example_1/example_1.dart';
-import 'package:flutter_3d_carousel_example/example_2/example_2.dart';
-import 'package:flutter_3d_carousel_example/example_3/example_3.dart';
+import 'package:flutter_3d_carousel_example/examples/example_1.dart';
+import 'package:flutter_3d_carousel_example/examples/example_2.dart';
+import 'package:flutter_3d_carousel_example/examples/example_3.dart';
+import 'package:flutter_3d_carousel_example/examples/example_4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomeScreen());
+    // return MaterialApp(home: HomeScreen());
+    return MaterialApp(home: Example4());
   }
 }
 
@@ -72,6 +74,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 foregroundColor: WidgetStatePropertyAll(Colors.white),
               ),
               child: Text('Example 3', style: TextStyle(fontSize: 22)),
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Example4()),
+                );
+              },
+              style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(Colors.blue),
+                foregroundColor: WidgetStatePropertyAll(Colors.white),
+              ),
+              child: Text('Example 4', style: TextStyle(fontSize: 22)),
             ),
           ],
         ),

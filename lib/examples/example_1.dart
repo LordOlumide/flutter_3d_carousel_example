@@ -17,13 +17,13 @@ class Example1 extends StatelessWidget {
         onlyRenderForeground: false,
         clockwise: false,
         backgroundBlur: 3,
-        spinWhileRotating: true,
-        shouldRotate: true,
+        childrenAreAlwaysFacingForward: true,
+        thetaShouldRotate: true,
         timeForFullRevolution: 20000,
         snapTimeInMillis: 100,
         perspectiveStrength: 0.001,
         dragSensitivity: 1.0,
-        onValueChanged: (newValue) {
+        onThetaValueChanged: (newValue) {
           // print(newValue);
         },
         background: null,

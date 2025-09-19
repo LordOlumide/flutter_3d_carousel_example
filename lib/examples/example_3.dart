@@ -14,9 +14,9 @@ class Example3 extends StatelessWidget {
             child: CarouselWidget3D(
               radius: MediaQuery.sizeOf(context).width * 0.6,
               onlyRenderForeground: true,
-              spinWhileRotating: false,
-              shouldRotate: true,
-              spinAxis: Axis.vertical,
+              childrenAreAlwaysFacingForward: false,
+              thetaShouldRotate: true,
+              dragDirection: Axis.vertical,
               timeForFullRevolution: 20000,
               perspectiveStrength: 0.002,
               dragSensitivity: 1.5,

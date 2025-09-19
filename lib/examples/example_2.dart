@@ -18,6 +18,7 @@ class _Example2State extends State<Example2> {
         children: [
           Expanded(child: Container(color: Colors.blue)),
           Expanded(
+            flex: 2,
             child: CarouselWidget3D(
               radius: MediaQuery.sizeOf(context).width / 2,
               childScale: 0.7,
@@ -28,16 +29,16 @@ class _Example2State extends State<Example2> {
               isDragInteractive: true,
               onlyRenderForeground: false,
               clockwise: false,
-              spinAxis: Axis.horizontal,
+              dragDirection: Axis.horizontal,
               backgroundBlur: 3,
-              spinWhileRotating: false,
-              shouldRotate: true,
+              childrenAreAlwaysFacingForward: true,
+              thetaShouldRotate: true,
               timeForFullRevolution: 12000,
               snapTimeInMillis: 100,
               perspectiveStrength: 0.001,
               dragSensitivity: 1.5,
               clipBehavior: Clip.hardEdge,
-              onValueChanged: (newValue) {
+              onThetaValueChanged: (newValue) {
                 // print(newValue);
               },
               background: Image.asset(
