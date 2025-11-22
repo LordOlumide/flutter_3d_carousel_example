@@ -27,7 +27,7 @@ class _Example2State extends State<Example2> {
                   BackgroundTapBehavior.startAndSnapToNearest,
               childTapBehavior: ChildTapBehavior.stopAndSnapToChild,
               isDragInteractive: true,
-              onlyRenderForeground: false,
+              hideBackground: false,
               clockwise: false,
               dragDirection: Axis.horizontal,
               backgroundBlur: 3,

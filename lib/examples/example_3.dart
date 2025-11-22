@@ -13,7 +13,7 @@ class Example3 extends StatelessWidget {
           Expanded(
             child: CarouselWidget3D(
               radius: MediaQuery.sizeOf(context).width * 0.6,
-              onlyRenderForeground: true,
+              hideBackground: true,
               childrenAreAlwaysFacingForward: false,
               thetaShouldRotate: true,
               dragDirection: Axis.vertical,

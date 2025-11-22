@@ -25,26 +25,30 @@ class Example4 extends StatelessWidget {
             ),
             CarouselWidget3D(
               radius: 200,
-              childrenAreAlwaysFacingForward: true,
+              childrenAreAlwaysFacingForward: false,
               thetaShouldRotate: true,
               alphaShouldRotate: true,
               backgroundBlur: 0,
               timeForFullRevolution: 20000,
+              initialTheta: 0 * math.pi / 180,
               tiltController: TiltController(
-                initialTiltAngle: 30 * math.pi / 180,
-                axisOffset: 30,
-                tiltAnimationTime: 20000,
+                initialTiltAngle: 90 * math.pi / 180,
+                axisOffset: 0,
+                tiltAnimationTime: 10000,
               ),
               clipBehavior: Clip.none,
               children: List.generate(
-                10,
+                20,
                 (index) => CarouselChild(
                   child: Container(
-                    width: 60,
-                    height: 60,
+                    width: 100,
+                    height: 100,
                     decoration: BoxDecoration(
                       color: Colors.blue,
-                      shape: BoxShape.circle,
+                      shape: BoxShape.rectangle,
+                    ),
+                    child: Center(
+                      child: Text('F', style: TextStyle(fontSize: 50)),
                     ),
                   ),
                 ),

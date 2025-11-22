@@ -14,7 +14,7 @@ class Example1 extends StatelessWidget {
         backgroundTapBehavior: BackgroundTapBehavior.startAndSnapToNearest,
         childTapBehavior: ChildTapBehavior.transparent,
         isDragInteractive: true,
-        onlyRenderForeground: false,
+        hideBackground: false,
         clockwise: false,
         backgroundBlur: 3,
         childrenAreAlwaysFacingForward: true,
