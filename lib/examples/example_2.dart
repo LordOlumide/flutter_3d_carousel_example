@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_3d_carousel/flutter_3d_carousel.dart';
 
@@ -22,25 +24,17 @@ class _Example2State extends State<Example2> {
             child: CarouselWidget3D(
               radius: MediaQuery.sizeOf(context).width / 2,
               childScale: 0.7,
-              dragEndBehavior: DragEndBehavior.snapToNearest,
-              backgroundTapBehavior:
-                  BackgroundTapBehavior.startAndSnapToNearest,
-              childTapBehavior: ChildTapBehavior.stopAndSnapToChild,
-              isDragInteractive: true,
               hideBackground: false,
               clockwise: false,
-              dragDirection: Axis.horizontal,
               backgroundBlur: 3,
               childrenAreAlwaysFacingForward: true,
-              thetaShouldRotate: true,
-              timeForFullRevolution: 12000,
+              roll: LinearInputFunction(gradient: math.pi / 12),
+              pitch: ConstantInputFunction(value: 0),
+              yaw: ConstantInputFunction(value: 0),
               snapTimeInMillis: 100,
               perspectiveStrength: 0.001,
               dragSensitivity: 1.5,
               clipBehavior: Clip.hardEdge,
-              onThetaValueChanged: (newValue) {
-                // print(newValue);
-              },
               background: Image.asset(
                 'assets/images/background_1.jpg',
                 fit: BoxFit.cover,

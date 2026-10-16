@@ -8,16 +8,14 @@ class Example4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double radius = 350;
-
     return Scaffold(
       body: Center(
         child: Stack(
           alignment: Alignment.center,
           children: [
             Container(
-              width: radius,
-              height: radius,
+              width: 350,
+              height: 350,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(width: 3, color: Colors.red),
@@ -26,29 +24,25 @@ class Example4 extends StatelessWidget {
             CarouselWidget3D(
               radius: 200,
               childrenAreAlwaysFacingForward: false,
-              thetaShouldRotate: true,
-              alphaShouldRotate: true,
+              // roll: ConstantInputFunction(value: 0),
+              roll: LinearInputFunction(gradient: math.pi / 10, initialValue: 0),
+              pitch: LinearInputFunction(gradient: 0, initialValue: -math.pi / 30),
+              yaw: LinearInputFunction(gradient: 0, initialValue: 0),
               backgroundBlur: 0,
-              timeForFullRevolution: 20000,
-              initialTheta: 0 * math.pi / 180,
-              tiltController: TiltController(
-                initialTiltAngle: 90 * math.pi / 180,
-                axisOffset: 0,
-                tiltAnimationTime: 10000,
-              ),
               clipBehavior: Clip.none,
               children: List.generate(
                 20,
                 (index) => CarouselChild(
                   child: Container(
-                    width: 100,
-                    height: 100,
+                    width: 50,
+                    height: 50,
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       shape: BoxShape.rectangle,
+                      border: Border.all(),
                     ),
                     child: Center(
-                      child: Text('F', style: TextStyle(fontSize: 50)),
+                      child: Text('${index+1}', style: TextStyle(fontSize: 25)),
                     ),
                   ),
                 ),

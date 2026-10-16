@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_3d_carousel/flutter_3d_carousel.dart';
 
@@ -10,22 +12,16 @@ class Example1 extends StatelessWidget {
       body: CarouselWidget3D(
         radius: MediaQuery.sizeOf(context).width,
         childScale: 0.9,
-        dragEndBehavior: DragEndBehavior.snapToNearest,
-        backgroundTapBehavior: BackgroundTapBehavior.startAndSnapToNearest,
-        childTapBehavior: ChildTapBehavior.transparent,
-        isDragInteractive: true,
         hideBackground: false,
         clockwise: false,
         backgroundBlur: 3,
         childrenAreAlwaysFacingForward: true,
-        thetaShouldRotate: true,
-        timeForFullRevolution: 20000,
+        roll: LinearInputFunction(gradient: math.pi / 12),
+        pitch: ConstantInputFunction(value: 0),
+        yaw: ConstantInputFunction(value: 0),
         snapTimeInMillis: 100,
         perspectiveStrength: 0.001,
         dragSensitivity: 1.0,
-        onThetaValueChanged: (newValue) {
-          // print(newValue);
-        },
         background: null,
         core: null,
         children: List.generate(
