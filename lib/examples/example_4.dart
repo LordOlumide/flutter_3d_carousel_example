@@ -23,34 +23,16 @@ class Example4 extends StatelessWidget {
             ),
             CarouselWidget3D(
               radius: 200,
-              childOrientation: ChildOrientation.facingScreen,
+              childOrientation: ChildOrientation.backingCenter,
               backgroundTapBehavior: BackgroundTapBehavior.startOrSnapToNearest,
               // roll: ConstantInputFunction(value: 0),
               roll: LinearInputFunction(gradient: math.pi / 10, initialValue: 0),
               pitch: LinearInputFunction(gradient: math.pi / 5, initialValue: 0),
               yaw: LinearInputFunction(gradient: math.pi / 3, initialValue: 0),
-              // roll: IntermittentInputFunction(
-              //   motionFunction: LinearInputFunction(gradient: math.pi / 3),
-              //   movementDuration: const Duration(seconds: 3),
-              //   pauseDuration: const Duration(seconds: 9),
-              //   timeOffset: const Duration(seconds: 0),
-              // ),
-              // pitch: IntermittentInputFunction(
-              //   motionFunction: LinearInputFunction(gradient: math.pi / 3),
-              //   movementDuration: const Duration(seconds: 3),
-              //   pauseDuration: const Duration(seconds: 9),
-              //   timeOffset: const Duration(seconds: 3),
-              // ),
-              // yaw: IntermittentInputFunction(
-              //   motionFunction: LinearInputFunction(gradient: math.pi / 3),
-              //   movementDuration: const Duration(seconds: 3),
-              //   pauseDuration: const Duration(seconds: 9),
-              //   timeOffset: const Duration(seconds: 6),
-              // ),
               backgroundBlur: 0,
               clipBehavior: Clip.none,
               children: List.generate(
-                15,
+                20,
                 (index) => CarouselChild(
                   child: Container(
                     width: 50,
