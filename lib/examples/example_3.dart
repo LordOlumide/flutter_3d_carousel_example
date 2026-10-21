@@ -17,7 +17,7 @@ class Example3 extends StatelessWidget {
               childScale: 0.5,
               radius: MediaQuery.sizeOf(context).width * 0.6,
               hideBackground: true,
-              childrenAreAlwaysFacingForward: false,
+              childOrientation: ChildOrientation.backingCenter,
               roll: LinearInputFunction(gradient: math.pi / 12),
               pitch: ConstantInputFunction(value: 0),
               yaw: ConstantInputFunction(value: 0),
