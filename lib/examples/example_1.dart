@@ -9,30 +9,70 @@ class Example1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CarouselWidget3D(
-        radius: MediaQuery.sizeOf(context).width,
-        childScale: 0.9,
-        hideBackground: false,
-        backgroundBlur: 3,
-        childOrientation: ChildOrientation.backingCenter,
-        roll: LinearInputFunction(gradient: math.pi / 12),
-        pitch: ConstantInputFunction(value: 0),
-        yaw: ConstantInputFunction(value: 0),
-        snapTimeInMillis: 100,
-        perspectiveStrength: 0.001,
-        dragSensitivity: 1.0,
-        background: null,
-        core: null,
-        children: List.generate(
-          colors.length,
-          (index) => CarouselChild(
-            child: Container(
-              width: MediaQuery.sizeOf(context).width,
-              height: MediaQuery.sizeOf(context).height,
-              color: colors[index],
+      body: Column(
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  child: Text(
+                    'Horizontal Carousel',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                ),
+                Expanded(
+                  child: CarouselWidget3D.horizontal(
+                    radius: MediaQuery.sizeOf(context).width / 2,
+                    childScale: 0.9,
+                    roll: LinearInputFunction(gradient: math.pi / 12),
+                    children: List.generate(
+                      colors.length,
+                      (index) => CarouselChild(
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width / 2,
+                          height: MediaQuery.sizeOf(context).height / 4,
+                          color: colors[index],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
+          const Divider(),
+          Expanded(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  child: Text(
+                    'Vertical Carousel',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                ),
+                Expanded(
+                  child: CarouselWidget3D.vertical(
+                    radius: MediaQuery.sizeOf(context).width / 2,
+                    childScale: 0.9,
+                    roll: LinearInputFunction(gradient: math.pi / 12),
+                    children: List.generate(
+                      colors.length,
+                      (index) => CarouselChild(
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width / 2,
+                          height: MediaQuery.sizeOf(context).height / 4,
+                          color: colors[index],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

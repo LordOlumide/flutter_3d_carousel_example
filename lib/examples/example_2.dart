@@ -11,71 +11,138 @@ class Example2 extends StatefulWidget {
 }
 
 class _Example2State extends State<Example2> {
-  Color? selectedColor;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          Expanded(child: Container(color: Colors.blue)),
           Expanded(
-            flex: 2,
-            child: CarouselWidget3D(
-              radius: MediaQuery.sizeOf(context).width / 2,
-              childScale: 0.7,
-              hideBackground: false,
-              backgroundBlur: 3,
-              childOrientation: ChildOrientation.backingCenter,
-              roll: LinearInputFunction(gradient: math.pi / 12),
-              pitch: ConstantInputFunction(value: 0),
-              yaw: ConstantInputFunction(value: 0),
-              snapTimeInMillis: 100,
-              perspectiveStrength: 0.001,
-              dragSensitivity: 1.5,
-              clipBehavior: Clip.hardEdge,
-              background: Image.asset(
-                'assets/images/background_1.jpg',
-                fit: BoxFit.cover,
-              ),
-              core: Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.yellow,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: Text('Roll', style: TextStyle(fontSize: 25)),
                 ),
-              ),
-              children: List.generate(colors.length, (index) {
-                return CarouselChild(
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width / 3,
-                    height: MediaQuery.sizeOf(context).height / 3,
-                    decoration: BoxDecoration(
-                      color: colors[index],
-                      shape: BoxShape.circle,
+                Expanded(
+                  child: CarouselWidget3D(
+                    radius: 70,
+                    backgroundBlur: 0,
+                    backgroundTapBehavior: BackgroundTapBehavior.none,
+                    childTapBehavior: ChildTapBehavior.doNothing,
+                    dragBehaviour: DragBehaviour.none,
+                    roll: LinearInputFunction(gradient: math.pi / 3),
+                    core: Container(
+                      width: 200,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.blue, width: 3),
+                      ),
                     ),
+                    children: List.generate(colors.length * 3, (index) {
+                      return CarouselChild(
+                        child: Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: colors[index % colors.length],
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                      );
+                    }),
                   ),
-                  onTap: () {
-                    setState(() {
-                      selectedColor = colors[index];
-                    });
-                  },
-                );
-              }),
+                ),
+              ],
             ),
           ),
+          const Divider(),
           Expanded(
-            child: Container(
-              color: Colors.indigo,
-              alignment: Alignment.center,
-              child: Container(
-                width: 150,
-                height: 150,
-                color: selectedColor ?? Colors.white,
-              ),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: Text('Pitch', style: TextStyle(fontSize: 25)),
+                ),
+                Expanded(
+                  child: CarouselWidget3D(
+                    radius: 70,
+                    backgroundBlur: 0,
+                    backgroundTapBehavior: BackgroundTapBehavior.none,
+                    childTapBehavior: ChildTapBehavior.doNothing,
+                    dragBehaviour: DragBehaviour.none,
+                    pitch: LinearInputFunction(gradient: math.pi / 3),
+                    core: Container(
+                      width: 200,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.blue, width: 3),
+                      ),
+                    ),
+                    children: List.generate(colors.length * 3, (index) {
+                      return CarouselChild(
+                        child: Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: colors[index % colors.length],
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+              ],
             ),
           ),
+          const Divider(),
+          Expanded(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: Text(
+                    'Yaw (with pitch at 45 degrees)',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                ),
+                Expanded(
+                  child: CarouselWidget3D(
+                    radius: 70,
+                    backgroundBlur: 0,
+                    backgroundTapBehavior: BackgroundTapBehavior.none,
+                    childTapBehavior: ChildTapBehavior.doNothing,
+                    dragBehaviour: DragBehaviour.none,
+                    pitch: LinearInputFunction(initialValue: math.pi / 4),
+                    yaw: LinearInputFunction(gradient: math.pi / 3),
+                    core: Container(
+                      width: 200,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.blue, width: 3),
+                      ),
+                    ),
+                    children: List.generate(colors.length * 3, (index) {
+                      return CarouselChild(
+                        child: Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: colors[index % colors.length],
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
         ],
       ),
     );
