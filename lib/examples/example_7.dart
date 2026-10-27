@@ -14,7 +14,7 @@ class Example7 extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
-              'With pitch = 30 degrees',
+              'With pitch = 90 degrees',
               style: TextStyle(fontSize: 20),
             ),
           ),
