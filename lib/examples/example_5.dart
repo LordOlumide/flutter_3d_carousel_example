@@ -11,85 +11,61 @@ class Example5 extends StatefulWidget {
 }
 
 class _Example5State extends State<Example5> {
-  Color? selectedColor;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(child: Container(color: Colors.blue)),
-          Expanded(
-            flex: 2,
-            child: CarouselWidget3D(
-              radius: MediaQuery.sizeOf(context).width / 2,
-              childScale: 0.7,
-              hideBackground: false,
-              backgroundBlur: 3,
+      body: Center(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              width: 350,
+              height: 350,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(width: 3, color: Colors.red),
+              ),
+            ),
+            CarouselWidget3D(
+              radius: 200,
               childOrientation: OrientedBackingCenter(),
-              roll: LinearInputFunction(gradient: math.pi / 12),
-              pitch: ConstantInputFunction(value: 0),
-              yaw: ConstantInputFunction(value: 0),
-              snapTimeInMillis: 100,
-              perspectiveStrength: 0.001,
-              dragSensitivity: 1.5,
-              clipBehavior: Clip.hardEdge,
-              background: Image.asset(
-                'assets/images/background_1.jpg',
-                fit: BoxFit.cover,
+              dragEndBehavior: DragEndBehavior.continueSpinning,
+              backgroundTapBehavior: BackgroundTapBehavior.startOrSnapToNearest,
+              roll: LinearInputFunction(
+                gradient: math.pi / 10,
+                initialValue: 0,
               ),
-              core: Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.yellow,
-                ),
+              pitch: LinearInputFunction(
+                gradient: math.pi / 5,
+                initialValue: 0,
               ),
-              children: List.generate(colors.length, (index) {
-                return CarouselChild(
+              yaw: LinearInputFunction(gradient: math.pi / 3, initialValue: 0),
+              backgroundBlur: 0,
+              clipBehavior: Clip.none,
+              children: List.generate(
+                20,
+                (index) => CarouselChild(
                   child: Container(
-                    width: MediaQuery.sizeOf(context).width / 3,
-                    height: MediaQuery.sizeOf(context).height / 3,
+                    width: 50,
+                    height: 50,
                     decoration: BoxDecoration(
-                      color: colors[index],
-                      shape: BoxShape.circle,
+                      color: Colors.blue,
+                      shape: BoxShape.rectangle,
+                      border: Border.all(),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '${index + 1}',
+                        style: TextStyle(fontSize: 25),
+                      ),
                     ),
                   ),
-                  onTap: () {
-                    setState(() {
-                      selectedColor = colors[index];
-                    });
-                  },
-                );
-              }),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.indigo,
-              alignment: Alignment.center,
-              child: Container(
-                width: 150,
-                height: 150,
-                color: selectedColor ?? Colors.white,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
-
-List<Color> colors = [
-  Colors.lightBlue,
-  Colors.greenAccent,
-  Colors.teal,
-  Colors.grey,
-  Colors.orangeAccent,
-  Colors.purple,
-  Colors.red,
-  Colors.brown,
-  Colors.pink,
-];

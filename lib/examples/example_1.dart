@@ -24,7 +24,6 @@ class Example1 extends StatelessWidget {
                 Expanded(
                   child: CarouselWidget3D.horizontal(
                     radius: MediaQuery.sizeOf(context).width / 2,
-                    childScale: 0.9,
                     roll: LinearInputFunction(gradient: math.pi / 12),
                     children: List.generate(
                       colors.length,
@@ -55,7 +54,6 @@ class Example1 extends StatelessWidget {
                 Expanded(
                   child: CarouselWidget3D.vertical(
                     radius: MediaQuery.sizeOf(context).width / 2,
-                    childScale: 0.9,
                     roll: LinearInputFunction(gradient: math.pi / 12),
                     children: List.generate(
                       colors.length,

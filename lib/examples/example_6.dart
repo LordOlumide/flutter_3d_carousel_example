@@ -11,61 +11,85 @@ class Example6 extends StatefulWidget {
 }
 
 class _Example6State extends State<Example6> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Container(
-              width: 350,
-              height: 350,
+  double getRandomAngle() {
+    final random = math.Random();
+    return random.nextDouble() * 2 * math.pi;
+  }
+
+  Widget _createWidgets([int count = 20]) {
+    if (count == 0) {
+      return CarouselWidget3D(
+        radius: count * 10,
+        childOrientation: OrientedBackingCenter(),
+        dragBehaviour: DragBehaviour.none,
+        backgroundTapBehavior: BackgroundTapBehavior.none,
+        roll: LinearInputFunction(
+          gradient: math.pi / 5,
+          initialValue: getRandomAngle(),
+        ),
+        pitch: LinearInputFunction(
+          gradient: math.pi / 4,
+          initialValue: getRandomAngle(),
+        ),
+        yaw: LinearInputFunction(
+          gradient: math.pi / 3,
+          initialValue: getRandomAngle(),
+        ),
+        backgroundBlur: 0,
+        children: List.generate(
+          20,
+          (index) => CarouselChild(
+            child: Container(
+              width: count * 3,
+              height: count * 3,
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(width: 3, color: Colors.red),
+                color: count % 2 == 0 ? Colors.blue : Colors.yellow,
+                shape: BoxShape.rectangle,
+                border: Border.all(),
               ),
             ),
-            CarouselWidget3D(
-              radius: 200,
-              childOrientation: OrientedBackingCenter(),
-              dragEndBehavior: DragEndBehavior.continueSpinning,
-              backgroundTapBehavior: BackgroundTapBehavior.startOrSnapToNearest,
-              roll: LinearInputFunction(
-                gradient: math.pi / 10,
-                initialValue: 0,
-              ),
-              pitch: LinearInputFunction(
-                gradient: math.pi / 5,
-                initialValue: 0,
-              ),
-              yaw: LinearInputFunction(gradient: math.pi / 3, initialValue: 0),
-              backgroundBlur: 0,
-              clipBehavior: Clip.none,
-              children: List.generate(
-                20,
-                (index) => CarouselChild(
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      shape: BoxShape.rectangle,
-                      border: Border.all(),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '${index + 1}',
-                        style: TextStyle(fontSize: 25),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+          ),
+        ),
+      );
+    }
+    return CarouselWidget3D(
+      radius: count * 10,
+      childOrientation: OrientedBackingCenter(),
+      dragBehaviour: DragBehaviour.none,
+      backgroundTapBehavior: BackgroundTapBehavior.none,
+      roll: LinearInputFunction(
+        gradient: math.pi / 5,
+        initialValue: getRandomAngle(),
+      ),
+      pitch: LinearInputFunction(
+        gradient: math.pi / 4,
+        initialValue: getRandomAngle(),
+      ),
+      yaw: LinearInputFunction(
+        gradient: math.pi / 3,
+        initialValue: getRandomAngle(),
+      ),
+      backgroundBlur: 0,
+      children: List.generate(
+        20,
+        (index) => CarouselChild(
+          child: Container(
+            width: count * 3,
+            height: count * 3,
+            decoration: BoxDecoration(
+              color: count % 2 == 0 ? Colors.blue : Colors.yellow,
+              shape: BoxShape.rectangle,
+              border: Border.all(),
             ),
-          ],
+          ),
         ),
       ),
+      core: _createWidgets(count - 1),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: _createWidgets()));
   }
 }

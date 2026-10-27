@@ -36,65 +36,78 @@ class _Example3State extends State<Example3> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Stack(
-          alignment: Alignment.center,
+        child: Column(
           children: [
-            Container(
-              width: 350,
-              height: 350,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(width: 3, color: Colors.red),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15.0),
+              child: Text(
+                'Intermittent Input Function example',
+                style: TextStyle(fontSize: 25),
               ),
             ),
-            CarouselWidget3D(
-              radius: 200,
-              roll: IntermittentInputFunction(
-                motionFunction: LinearInputFunction(
-                  gradient: math.pi / 3,
-                  initialValue: 0,
-                ),
-                movementDuration: const Duration(seconds: 2),
-                pauseDuration: const Duration(seconds: 4),
-                timeOffset: const Duration(seconds: 0),
-              ),
-              pitch: IntermittentInputFunction(
-                motionFunction: LinearInputFunction(
-                  gradient: math.pi / 3,
-                  initialValue: 0,
-                ),
-                movementDuration: const Duration(seconds: 2),
-                pauseDuration: const Duration(seconds: 4),
-                timeOffset: const Duration(seconds: 2),
-              ),
-              yaw: IntermittentInputFunction(
-                motionFunction: LinearInputFunction(
-                  gradient: math.pi / 3,
-                  initialValue: 0,
-                ),
-                movementDuration: const Duration(seconds: 2),
-                pauseDuration: const Duration(seconds: 4),
-                timeOffset: const Duration(seconds: 4),
-              ),
-              children: List.generate(
-                20,
-                (index) => CarouselChild(
-                  child: Container(
-                    width: 50,
-                    height: 50,
+            Expanded(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: 350,
+                    height: 350,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
-                      shape: BoxShape.rectangle,
-                      border: Border.all(),
+                      shape: BoxShape.circle,
+                      border: Border.all(width: 3, color: Colors.red),
                     ),
-                    child: Center(
-                      child: Text(
-                        '${index + 1}',
-                        style: TextStyle(fontSize: 25),
+                  ),
+                  CarouselWidget3D(
+                    radius: 200,
+                    roll: IntermittentInputFunction(
+                      motionFunction: LinearInputFunction(
+                        gradient: math.pi / 2.6,
+                        initialValue: 0,
+                      ),
+                      movementDuration: const Duration(seconds: 2),
+                      pauseDuration: const Duration(seconds: 4),
+                      timeOffset: const Duration(seconds: 0),
+                    ),
+                    pitch: IntermittentInputFunction(
+                      motionFunction: LinearInputFunction(
+                        gradient: math.pi / 2.5,
+                        initialValue: 0,
+                      ),
+                      movementDuration: const Duration(seconds: 2),
+                      pauseDuration: const Duration(seconds: 4),
+                      timeOffset: const Duration(seconds: 2),
+                    ),
+                    yaw: IntermittentInputFunction(
+                      motionFunction: LinearInputFunction(
+                        gradient: math.pi / 2,
+                        initialValue: 0,
+                      ),
+                      movementDuration: const Duration(seconds: 2),
+                      pauseDuration: const Duration(seconds: 4),
+                      timeOffset: const Duration(seconds: 4),
+                    ),
+                    children: List.generate(
+                      20,
+                      (index) => CarouselChild(
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            shape: BoxShape.rectangle,
+                            border: Border.all(),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '${index + 1}',
+                              style: TextStyle(fontSize: 25),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
             ),
           ],
