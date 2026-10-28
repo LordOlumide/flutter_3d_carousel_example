@@ -24,15 +24,15 @@ class _Example6State extends State<Example6> {
         dragBehaviour: DragBehaviour.none,
         backgroundTapBehavior: BackgroundTapBehavior.none,
         roll: LinearInputFunction(
-          gradient: math.pi / 5,
+          gradient: (math.pi / 5) * (count % 2 == 0 ? 1 : -1),
           initialValue: getRandomAngle(),
         ),
         pitch: LinearInputFunction(
-          gradient: math.pi / 4,
+          gradient: (math.pi / 5) * (count % 2 == 0 ? 1 : -1),
           initialValue: getRandomAngle(),
         ),
         yaw: LinearInputFunction(
-          gradient: math.pi / 3,
+          gradient: (math.pi / 5) * (count % 2 == 0 ? 1 : -1),
           initialValue: getRandomAngle(),
         ),
         backgroundBlur: 0,
@@ -58,15 +58,15 @@ class _Example6State extends State<Example6> {
       dragBehaviour: DragBehaviour.none,
       backgroundTapBehavior: BackgroundTapBehavior.none,
       roll: LinearInputFunction(
-        gradient: math.pi / 5,
+        gradient: (math.pi / 5) * (count % 2 == 0 ? 1 : -1),
         initialValue: getRandomAngle(),
       ),
       pitch: LinearInputFunction(
-        gradient: math.pi / 4,
+        gradient: (math.pi / 5) * (count % 2 == 0 ? 1 : -1),
         initialValue: getRandomAngle(),
       ),
       yaw: LinearInputFunction(
-        gradient: math.pi / 3,
+        gradient: (math.pi / 5) * (count % 2 == 0 ? 1 : -1),
         initialValue: getRandomAngle(),
       ),
       backgroundBlur: 0,
